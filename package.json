@@ -1,0 +1,22 @@
+{
+  "name": "altdroid",
+  "version": "1.0.0",
+  "description": "An alternate app store for Android OSes, like Oculus or Samsung!",
+  "homepage": "https://github.com/Marko2155/AltDroid#readme",
+  "bugs": {
+    "url": "https://github.com/Marko2155/AltDroid/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marko2155/AltDroid.git"
+  },
+  "license": "MIT",
+  "author": "Marko Camandioti",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "dependencies": {
+  }
+}
