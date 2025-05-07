@@ -48,7 +48,9 @@ http.createServer(function(req, res) {
 			res.write(fs.readFileSync(__dirname + "/index.html"))
 			res.end()
 		} else if (path == "/developers") {
-
+			res.writeHead(200)
+			res.write(fs.readFileSync(__dirname + "/devs.html"))
+			res.end()
 		} else {
 			res.writeHead(404)
 			res.write("404 Not Found")
