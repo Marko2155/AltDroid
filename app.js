@@ -54,7 +54,7 @@ http.createServer(function(req, res) {
 			res.end()
 		} else if (path == "/getApk") {
 			if (query.id != null || query.id != undefined) {
-				if (fs.existsSync(`${__dirname}/dist/${String(query.id)}.apk`) {
+				if (fs.existsSync(`${__dirname}/dist/${String(query.id)}.apk`)) {
 					res.writeHead(200)
 					res.write(fs.readFileSync(`${__dirname}/dist/${String(query.id)}.apk`))
 					res.end()
