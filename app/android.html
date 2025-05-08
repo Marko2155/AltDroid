@@ -8,7 +8,9 @@
 		<script>
 			// added android client only function
 			Android.showToast("Welcome to AltDroid!")
-			Android.downloadApk(1)
+			document.getElementById("hi").addEventListener("click", function() {
+				Android.downloadApk(1)
+			})
 		</script>
 	</head>
 	<body>
@@ -26,5 +28,6 @@
 	</ul>
     </div>
   </nav>
+  	<button id="hi">hello</button>
 	</body>
 </html>
