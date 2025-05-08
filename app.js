@@ -3,6 +3,7 @@ const url = require("url")
 const fs = require("fs")
 const port = 80
 let questuas = JSON.parse(fs.readFileSync(__dirname + "/uas.json")).uas
+let appsList = JSON.parse(fs.readFileSync(__dirname + "/dist/apps.json"))
 
 function checkDevice(req, uas) {
 	let deviceInfo = {
@@ -13,13 +14,13 @@ function checkDevice(req, uas) {
 			deviceInfo.device = "Oculus"
 			break
 		} else {
-			deviceInfo.device = "Unknown"
+			deviceInfo.device = "Other"
 		}
 	}
 	if (String(req.headers["user-agent"]).includes("Android")) {
 		deviceInfo.device = "Android"
 	} else {
-		deviceInfo.device = "Unknown"
+		deviceInfo.device = "Other"
 	}
 	return deviceInfo
 }
@@ -50,6 +51,26 @@ http.createServer(function(req, res) {
 		} else if (path == "/developers") {
 			res.writeHead(200)
 			res.write(fs.readFileSync(__dirname + "/devs.html"))
+			res.end()
+		} else if (path == "/getApk") {
+			if (query.id != null || query.id != undefined) {
+				if (fs.existsSync(`${__dirname}/dist/${String(query.id)}.apk`) {
+					res.writeHead(200)
+					res.write(fs.readFileSync(`${__dirname}/dist/${String(query.id)}.apk`))
+					res.end()
+				} else {
+					res.write(404)
+					res.write(`APK with ID ${String(query.id)} not found!`)
+					res.end()
+				}
+			} else {
+				res.writeHead(401)
+				res.write("Please give ID!")
+				res.end()
+			}
+		} else if (path == "/listApk") {
+			res.writeHead(200)
+			res.write(JSON.stringify(appsList))
 			res.end()
 		} else {
 			res.writeHead(404)

@@ -1,0 +1,12 @@
+[
+	{
+		"appName": "TestApp",
+		"appId": 1,
+		"appPlatform": "Android"
+	},
+	{
+		"appName": "TestVR",
+		"appId": 2,
+		"appPlatform": "Oculus"
+	}
+]
